@@ -1,4 +1,3 @@
-# investment_portfolio/services.py
 from datetime import date
 from typing import Dict, List, Any
 
@@ -35,7 +34,7 @@ def get_portfolio_evolution(
                 asset_values[holding.asset.name] = 0.0
         
         # Calculate total value and weights
-        total_value = float(calculate_portfolio_value(holdings, daily_prices))
+        total_value = round(float(calculate_portfolio_value(holdings, daily_prices)), 2)
         weights = calculate_weights(asset_values, total_value)
         
         evolution.append({
