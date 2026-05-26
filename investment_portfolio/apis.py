@@ -1,14 +1,14 @@
-# investment_portfolio/apis.py
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import serializers, status
 
 from investment_portfolio.services import get_portfolio_evolution
+from investment_portfolio.selectors import get_available_dates
 
 class PortfolioEvolutionApi(APIView):
     class InputSerializer(serializers.Serializer):
-        fecha_inicio = serializers.DateField()
-        fecha_fin = serializers.DateField()
+        start = serializers.DateField()
+        end = serializers.DateField()
     
     def get(self, request, portfolio_id):
         # Validate input
@@ -18,8 +18,8 @@ class PortfolioEvolutionApi(APIView):
         # Call service (all business logic is there)
         evolution = get_portfolio_evolution(
             portfolio_id=portfolio_id,
-            start_date=serializer.validated_data['fecha_inicio'],
-            end_date=serializer.validated_data['fecha_fin']
+            start_date=serializer.validated_data['start'],
+            end_date=serializer.validated_data['end']
         )
         
         if not evolution:
@@ -29,3 +29,8 @@ class PortfolioEvolutionApi(APIView):
             )
         
         return Response(evolution)
+    
+class PortfolioDatesApi(APIView):
+    def get(self, request, portfolio_id):
+        dates = get_available_dates(portfolio_id)
+        return Response(dates)
