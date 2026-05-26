@@ -45,7 +45,10 @@ export function WeightsChart({ data, assetNames }) {
                 <AreaChart data={data}>
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="date" />
-                    <YAxis tickFormatter={(value) => `${(value * 100).toFixed(0)}%`} />
+                    <YAxis 
+                        tickFormatter={(value) => `${(value * 100).toFixed(0)}%`}
+                        domain={[0, 1]}
+                    />
                     <Tooltip formatter={(value) => `${(value * 100).toFixed(2)}%`} />
                     <Legend wrapperStyle={{ fontSize: '11px', maxHeight: '100px', overflowY: 'auto' }} />
                     {assetNames.map((asset, idx) => (

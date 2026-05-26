@@ -3,19 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Evolution</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 20px; background: #f5f5f5; }
-            .container { max-width: 1200px; margin: 0 auto; }
-            .charts { display: flex; flex-direction: column; gap: 30px; }
-            .chart-card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        h2 { margin-top: 0; color: #333; }
-            .controls { margin-bottom: 20px; display: flex; gap: 10px; align-items: center; }
-        select, button { padding: 8px 12px; font-size: 14px; }
-    </style>
+    <title>Portfolio Dashboard</title>
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <div id="root"></div>
+    <div class="container mt-4">
+        <div id="root"></div>
+    </div>
     <script type="module" src="/src/app.jsx"></script>
 </body>
 </html>
