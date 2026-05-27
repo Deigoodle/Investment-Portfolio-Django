@@ -30,8 +30,7 @@ SECRET_KEY = 'django-insecure-64m!zhv=1@^b89x2d9t^+4330uo$iqps&)+f8((oc_*%#@f84x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=['localhost', '127.0.0.1', 'backend'])
 
 # Application definition
 
@@ -132,6 +131,11 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 CORS_ALLOW_CREDENTIALS = True
+
+# REST Framework
+REST_FRAMEWORK = {
+    'EXCEPTION_HANDLER': 'config.exception_handler.drf_default_with_modifications_exception_handler',
+}
 
 # Import Settings
 
