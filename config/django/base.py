@@ -124,14 +124,6 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-# CORS settings
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
-    "http://127.0.0.1:5173",
-]
-
-CORS_ALLOW_CREDENTIALS = True
-
 # REST Framework
 REST_FRAMEWORK = {
     'EXCEPTION_HANDLER': 'config.exception_handler.drf_default_with_modifications_exception_handler',
@@ -141,5 +133,3 @@ REST_FRAMEWORK = {
 
 from config.settings.cors import *  # noqa
 from config.settings.sessions import *  # noqa
-from config.settings.celery import *  # noqa
-from config.settings.sentry import *  # noqa
