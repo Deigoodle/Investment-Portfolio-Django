@@ -1,5 +1,4 @@
-// API functions for fetching portfolio data
-const API_BASE = 'http://127.0.0.1:8000/api';
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8000/api';
 
 export async function fetchPortfolioDates(portfolioId) {
     const response = await fetch(`${API_BASE}/portfolios/${portfolioId}/dates/`);
@@ -15,9 +14,7 @@ export async function fetchPortfolioEvolution(portfolioId, startDate, endDate) {
 }
 
 export function transformChartData(evolutionData) {
-    // Transform API data into format suitable for Recharts
     if (!evolutionData || evolutionData.length === 0) return [];
-    
     return evolutionData.map(day => ({
         date: day.date,
         totalValue: day.total_value,
